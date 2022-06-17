@@ -5,9 +5,9 @@ import Image from "next/image";
 
 const Home: NextPage = () => {
   return (
-    <div className="dark:bg-slate-900 h-screen w-full flex items-center justify-center">
+    <>
       <Head>
-        <title>Raşit Çolakel - Software Engineer</title>
+        <title>Raşit Çolakel - Software Engineer - rasit.me</title>
         <meta
           name="description"
           content="I am an enthusiastic web and mobile developer. I like coding and developing new projects for startups, and I enjoy learning new technoloqies to improve my skills. I also have passion for learning different languages"
@@ -29,7 +29,7 @@ const Home: NextPage = () => {
         <SocialMedia />
       </main>
       <footer></footer>
-    </div>
+    </>
   );
 };
 
