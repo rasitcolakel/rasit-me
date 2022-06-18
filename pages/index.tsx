@@ -1,9 +1,24 @@
+import Contents from "@/components/layouts/Contents";
+import Tabs from "@/components/layouts/Tabs";
 import SocialMedia from "@/components/SocialMedia";
+import { extractProperties } from "@/utils/propertyExtractor";
+import { getBlogPosts } from "@/utils/queries";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import { useCallback, useReducer } from "react";
+import { BlogPost } from "src/models/BlogPost";
+import { initial, reducer } from "src/reducers/app";
+interface Props {
+  posts: BlogPost[];
+}
+const Home: NextPage<Props> = ({ posts }) => {
+  const [state, dispatch] = useReducer(reducer, initial);
 
-const Home: NextPage = () => {
+  const changeTab = useCallback((tab: number) => {
+    dispatch({ type: "SET_TAB", tab });
+  }, []);
+
   return (
     <>
       <Head>
@@ -27,10 +42,23 @@ const Home: NextPage = () => {
         <h1 className="text-2xl py-3 font-bold text-color">Raşit Çolakel</h1>
         <h3 className="py-1 font-light text-color">Software Engineer</h3>
         <SocialMedia />
+        <Tabs tab={state.tab} changeTab={changeTab} />
+        <Contents tab={state.tab} posts={posts} />
       </main>
       <footer></footer>
     </>
   );
 };
+
+export async function getServerSideProps() {
+  // Get the posts
+  let results = (await getBlogPosts()) as BlogPost[];
+  // Return the result
+  return {
+    props: {
+      posts: results.map((post) => extractProperties(post.properties)),
+    },
+  };
+}
 
 export default Home;
