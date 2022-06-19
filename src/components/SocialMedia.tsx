@@ -38,7 +38,7 @@ export default function SocialMedia({}: Props) {
   ] as SocialMedia[];
 
   return (
-    <div className="flex justify-center flex-row items-center flex-1">
+    <div className="flex justify-center flex-row items-center">
       {socialMedia.map((item: SocialMedia, key) => (
         <a
           key={key}

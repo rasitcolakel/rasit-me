@@ -1,7 +1,9 @@
 import {
+  Education,
+  ExtractedEducation,
   ExtractedPost,
   Link,
-  Properties,
+  Post,
   Tag,
   Tags,
   Title,
@@ -13,15 +15,23 @@ function tagsExtractor(tags: Tags): Tag[] {
 function titleExtractor(title: Title): string {
   return title.title[0].text.content;
 }
-function linkExtractor(link: Link): string {
+function richTextExtractor(link: Link): string {
   return link.rich_text[0].text.content;
 }
 
-function extractProperties(properties: Properties): ExtractedPost {
+function extractPost(properties: Post): ExtractedPost {
   return {
     tags: tagsExtractor(properties.tags),
     title: titleExtractor(properties.title),
-    link: linkExtractor(properties.link),
+    link: richTextExtractor(properties.link),
   };
 }
-export { extractProperties };
+
+function extractEducation(properties: Education): ExtractedEducation {
+  return {
+    title: titleExtractor(properties.title),
+    description: richTextExtractor(properties.description),
+  };
+}
+
+export { extractPost, extractEducation };

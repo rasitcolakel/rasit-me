@@ -1,13 +1,13 @@
 import { useReducer, createContext, FC, ReactNode, useCallback } from "react";
-import { BlogPost } from "src/models/BlogPost";
+import { Education, Post } from "src/models";
 import { reducer } from "src/reducers/app";
 interface InitialState {
-  activeTab: number;
-  posts: BlogPost[];
+  posts: Post[];
+  educations: Education[];
 }
 const initialState: InitialState = {
-  activeTab: 0,
   posts: [],
+  educations: [],
 };
 
 const Context = createContext({});
@@ -29,10 +29,8 @@ interface Props {
 }
 const Provider: FC<Props> = ({ children, ...props }) => {
   const [state, dispatch] = useReducer(combineReducers(reducer), initialState); // pass more reducers combineReducers(user, blogs, products)
-  const changeTab = useCallback((activeTab: number) => {
-    dispatch({ type: "SET_TAB", activeTab });
-  }, []);
-  const value = { state, dispatch, changeTab };
+
+  const value = { state, dispatch };
   return <Context.Provider value={value}>{children}</Context.Provider>;
 };
 

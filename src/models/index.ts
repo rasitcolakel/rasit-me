@@ -1,31 +1,11 @@
-export interface BlogPost {
-  object: string;
-  id: string;
-  created_time: Date;
-  last_edited_time: Date;
-  created_by: CreatedDate;
-  last_edited_by: CreatedDate;
-  cover: null;
-  icon: null;
-  parent: Parent;
-  archived: boolean;
-  properties: Properties;
-  url: string;
-}
-
-export interface CreatedDate {
-  object: string;
-  id: string;
-}
-
-export interface Parent {
-  type: string;
-  database_id: string;
-}
-
-export interface Properties {
+export interface Post {
   tags: Tags;
   link: Link;
+  title: Title;
+}
+
+export interface Education {
+  description: Link;
   title: Title;
 }
 
@@ -57,4 +37,9 @@ export interface ExtractedPost {
   link: string;
   tags: Tag[];
   id?: string;
+}
+
+export interface ExtractedEducation {
+  title: string;
+  description: string;
 }

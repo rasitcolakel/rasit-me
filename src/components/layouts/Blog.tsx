@@ -2,7 +2,7 @@ import Link from "next/link";
 import React, { memo, useContext } from "react";
 import { FaEye } from "react-icons/fa";
 import { Context } from "src/context/app";
-import { ExtractedPost } from "src/models/BlogPost";
+import { ExtractedPost } from "src/models";
 import Tag from "../Tag";
 
 type Props = {};
@@ -28,16 +28,16 @@ const BlogItem = memo(function BlogItem({ post }: BlogItemProps) {
     <div className="w-full pb-2">
       <Link href={post.link}>
         <a
-          className="text-color flex flex-col  justify-between cursor-pointer hover:opacity-90"
+          className="text-color flex flex-col justify-between cursor-pointer hover:opacity-90"
           target="_blank"
         >
           <div className="flex items-center">
-            <span className="opacity-80 flex-1 my-4">{post.title}</span>
-            <FaEye className="mx-2 text-xl " />
+            <span className="opacity-80 flex-1 my-2">{post.title}</span>
+            <FaEye className="mx-2 text-xl" />
           </div>
         </a>
-      </Link>{" "}
-      <div className="grid grid-cols-4 gap-4 py-2">
+      </Link>
+      <div className="grid grid-cols-4 md:grid-cols-5 overflow-auto">
         {post.tags.map((tag, index) => (
           <Tag key={index} tag={tag} />
         ))}

@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { Tag } from "src/models/BlogPost";
+import { Tag } from "src/models";
 
 type Props = {
   tag: Tag;
@@ -11,43 +11,35 @@ interface ClassName {
 const ClassNames: ClassName[] = [
   {
     name: "blue",
-    className:
-      "text-center bg-blue-100/80 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200/80 dark:text-blue-800",
+    className: `flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-blue-700 bg-blue-100 border border-blue-300`,
   },
   {
     name: "gray",
-    className:
-      "text-center bg-gray-100/80 text-gray-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700/80 dark:text-gray-300",
+    className: `flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-gray-700 bg-gray-100 border border-gray-300`,
   },
   {
     name: "red",
-    className:
-      "text-center bg-red-100/80 text-red-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-red-200/80 dark:text-red-900",
+    className: `flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-red-700 bg-red-100 border border-red-300`,
   },
   {
     name: "green",
-    className:
-      "text-center bg-green-100/80 text-green-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-green-200/80 dark:text-green-900",
+    className: `flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-green-700 bg-green-100 border border-green-300`,
   },
   {
     name: "yellow",
-    className:
-      "text-center bg-yellow-100/80 text-yellow-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-yellow-200/80 dark:text-yellow-900",
+    className: `flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-yellow-700 bg-yellow-100 border border-yellow-300`,
   },
   {
     name: "indigo",
-    className:
-      "text-center bg-indigo-100/80 text-indigo-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-indigo-200/80 dark:text-indigo-900",
+    className: `flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-indigo-700 bg-indigo-100 border border-indigo-300`,
   },
   {
     name: "purple",
-    className:
-      "text-center bg-purple-100/80 text-purple-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-purple-200/80 dark:text-purple-900",
+    className: `flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-purple-700 bg-purple-100 border border-purple-300`,
   },
   {
     name: "pink",
-    className:
-      "text-center bg-pink-100/80 text-pink-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-pink-200/80 dark:text-pink-900",
+    className: `flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-pink-700 bg-pink-100 border border-pink-300`,
   },
 ];
 const Tag = ({ tag }: Props) => {
@@ -55,7 +47,13 @@ const Tag = ({ tag }: Props) => {
   if (!className)
     className =
       ClassNames[Math.floor(Math.random() * ClassNames.length)].className;
-
-  return <div className={className}>{tag.name}</div>;
+  console.log(className);
+  return (
+    <div className={className}>
+      <div className="text-xs font-normal leading-none max-w-full flex-initial">
+        {tag.name}
+      </div>
+    </div>
+  );
 };
 export default memo(Tag);
