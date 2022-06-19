@@ -24,6 +24,10 @@ const Home: NextPage<Props> = ({ educations }) => {
           content="I am an enthusiastic web and mobile developer. I like coding and developing new projects for startups, and I enjoy learning new technoloqies to improve my skills. I also have passion for learning different languages"
         />
         <link rel="icon" href="/favicon.ico" />
+        <meta
+          name="google-site-verification"
+          content="gg0UZmYfX4Zuwv63fkEInaOOUnpii72MrnDADo6QgCg"
+        />
       </Head>
       <main className="flex flex-col items-center w-full h-full">
         <Navbar />
