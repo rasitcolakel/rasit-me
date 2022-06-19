@@ -6,19 +6,18 @@ import { getBlogPosts } from "@/utils/queries";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import { useCallback, useReducer } from "react";
+import { useContext, useEffect } from "react";
+import { Context } from "src/context/app";
 import { BlogPost } from "src/models/BlogPost";
-import { initial, reducer } from "src/reducers/app";
 interface Props {
   posts: BlogPost[];
 }
 const Home: NextPage<Props> = ({ posts }) => {
-  const [state, dispatch] = useReducer(reducer, initial);
+  const { dispatch } = useContext(Context) as any;
 
-  const changeTab = useCallback((tab: number) => {
-    dispatch({ type: "SET_TAB", tab });
-  }, []);
-
+  useEffect(() => {
+    dispatch({ type: "SET_POSTS", posts });
+  }, [dispatch, posts]);
   return (
     <>
       <Head>
@@ -29,7 +28,7 @@ const Home: NextPage<Props> = ({ posts }) => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex justify-center flex-col items-center">
+      <main className="flex justify-center flex-col items-center w-full">
         <div className="h-56 w-56 relative p-2 shadow-xl rounded-full mt-2">
           <Image
             src="/pp.jpeg"
@@ -42,8 +41,8 @@ const Home: NextPage<Props> = ({ posts }) => {
         <h1 className="text-2xl py-3 font-bold text-color">Raşit Çolakel</h1>
         <h3 className="py-1 font-light text-color">Software Engineer</h3>
         <SocialMedia />
-        <Tabs tab={state.tab} changeTab={changeTab} />
-        <Contents tab={state.tab} posts={posts} />
+        <Tabs />
+        <Contents />
       </main>
       <footer></footer>
     </>
@@ -56,7 +55,9 @@ export async function getServerSideProps() {
   // Return the result
   return {
     props: {
-      posts: results.map((post) => extractProperties(post.properties)),
+      posts: results.map((post) => {
+        return { ...extractProperties(post.properties), id: post.id };
+      }),
     },
   };
 }

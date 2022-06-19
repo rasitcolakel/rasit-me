@@ -51,3 +51,10 @@ export interface Tag {
   name: string;
   color: string;
 }
+
+export interface ExtractedPost {
+  title: string;
+  link: string;
+  tags: Tag[];
+  id?: string;
+}

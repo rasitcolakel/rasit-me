@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "src/context/app";
 
-type Props = {
-  tab: number;
-  changeTab: (tab: number) => void;
-};
-function Tabs({ tab, changeTab }: Props) {
+type Props = {};
+function Tabs({}: Props) {
+  const { state, changeTab } = useContext(Context) as any;
+  const { activeTab } = state;
+
   const TabData: string[] = ["About", "Projects", "Blog", "Contact"];
   const tabClasses = {
     active:
@@ -18,9 +19,10 @@ function Tabs({ tab, changeTab }: Props) {
         {TabData.map((name, index) => (
           <li className="" key={index}>
             <a
-              href="#"
-              className={index === tab ? tabClasses.active : tabClasses.normal}
-              onClick={() => index !== tab && changeTab(index)}
+              className={
+                index === activeTab ? tabClasses.active : tabClasses.normal
+              }
+              onClick={() => index !== activeTab && changeTab(index)}
             >
               {name}
             </a>

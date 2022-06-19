@@ -1,4 +1,11 @@
-import { Link, Properties, Tag, Tags, Title } from "src/models/BlogPost";
+import {
+  ExtractedPost,
+  Link,
+  Properties,
+  Tag,
+  Tags,
+  Title,
+} from "src/models/BlogPost";
 
 function tagsExtractor(tags: Tags): Tag[] {
   return tags.multi_select.map((tag) => tag);
@@ -10,7 +17,7 @@ function linkExtractor(link: Link): string {
   return link.rich_text[0].text.content;
 }
 
-function extractProperties(properties: Properties) {
+function extractProperties(properties: Properties): ExtractedPost {
   return {
     tags: tagsExtractor(properties.tags),
     title: titleExtractor(properties.title),

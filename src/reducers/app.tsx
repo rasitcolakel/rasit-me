@@ -1,18 +1,18 @@
-interface InitialState {
-  tab: number;
-}
-const initial: InitialState = { tab: 0 };
-
 const reducer = (state: any, action: any) => {
   switch (action.type) {
     case "SET_TAB":
       return {
         ...state,
-        tab: action.tab,
+        activeTab: action.activeTab,
+      };
+    case "SET_POSTS":
+      return {
+        ...state,
+        posts: action.posts,
       };
     default:
       return state;
   }
 };
 
-export { reducer, initial };
+export { reducer };

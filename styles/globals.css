@@ -6,6 +6,12 @@
   .text-color {
     @apply dark:text-gray-300;
   }
+  body {
+    @apply dark:bg-slate-900 h-screen w-full flex items-center justify-center;
+  }
+  #__next {
+    @apply w-full h-full;
+  }
 }
 html,
 body {
