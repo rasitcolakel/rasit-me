@@ -18,7 +18,7 @@ export default async function handler(
   const response = (await notion.databases.query({
     database_id: database_id,
   })) as QueryDatabaseResponse;
-  res.setHeader("Cache-Control", "public, max-age=6000");
+  res.setHeader("Cache-Control", `public, max-age=${process.env.CACHE_TIME}`);
   res.status(200).send(
     response.results.map((r: any) => {
       return { ...extractPost(r.properties), id: r.id };
