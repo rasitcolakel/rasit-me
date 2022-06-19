@@ -7,7 +7,7 @@ import {
   Tag,
   Tags,
   Title,
-} from "src/models/BlogPost";
+} from "src/models";
 
 function tagsExtractor(tags: Tags): Tag[] {
   return tags.multi_select.map((tag) => tag);

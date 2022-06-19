@@ -1,7 +1,10 @@
 import Head from "next/head";
 import Link from "next/link";
 import { FaChevronLeft, FaUnlink } from "react-icons/fa";
-export default function FourOhFour() {
+import type { NextPage } from "next";
+
+interface Props {}
+const FourOhFour: NextPage<Props> = () => {
   return (
     <>
       <Head>
@@ -24,4 +27,6 @@ export default function FourOhFour() {
       </main>
     </>
   );
-}
+};
+
+export default FourOhFour;
