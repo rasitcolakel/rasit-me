@@ -1,6 +1,5 @@
 import About from "@/components/layouts/About";
 import Navbar from "@/components/layouts/Navbar";
-import SocialMedia from "@/components/SocialMedia";
 import { getEducationInformation } from "@/utils/queries";
 import type {
   GetServerSideProps,
@@ -8,12 +7,11 @@ import type {
   NextPage,
 } from "next";
 import Head from "next/head";
-import Image from "next/image";
 import { useContext, useEffect } from "react";
 import { Context } from "src/context/app";
-import { Education } from "src/models";
+import { Education, ExtractedEducation } from "src/models";
 interface Props {
-  educations: Education[];
+  educations: ExtractedEducation[];
 }
 const AboutPage: NextPage<Props> = ({ educations }) => {
   const { dispatch } = useContext(Context) as any;
@@ -51,7 +49,7 @@ export const getServerSideProps: GetServerSideProps = async (
     "Cache-Control",
     `public, s-maxage=${maxAge}, stale-while-revalidate=${maxAge * 2}`
   );
-  let educations = (await getEducationInformation()) as Education[];
+  let educations = (await getEducationInformation()) as ExtractedEducation[];
   return {
     props: {
       educations,

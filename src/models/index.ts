@@ -5,8 +5,8 @@ export interface Post {
 }
 
 export interface Education {
-  description: string;
-  title: string;
+  description: Link;
+  title: Title;
   id: string;
 }
 

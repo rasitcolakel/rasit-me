@@ -29,6 +29,7 @@ function extractPost(properties: Post): ExtractedPost {
 
 function extractEducation(properties: Education): ExtractedEducation {
   return {
+    id: properties.id,
     title: titleExtractor(properties.title),
     description: richTextExtractor(properties.description),
   };

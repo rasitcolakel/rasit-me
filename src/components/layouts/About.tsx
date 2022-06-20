@@ -1,8 +1,8 @@
 import React, { memo } from "react";
-import { Education } from "src/models";
+import { ExtractedEducation } from "src/models";
 
 type Props = {
-  educations: Education[];
+  educations: ExtractedEducation[];
 };
 
 function About(props: Props) {
