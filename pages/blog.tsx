@@ -29,9 +29,9 @@ const Home: NextPage<Props> = ({ posts }) => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex justify-center flex-col items-center w-full">
+      <main className="flex flex-col items-center w-full h-full">
         <Navbar />
-        <div className="w-full md:w-3/4 lg:w-1/3 pt-4 px-2">
+        <div className="w-full px-4">
           <h1 className="align-left text-color text-2xl py-2 self-start font-bold">
             Latest Posts
           </h1>

@@ -5,8 +5,9 @@ export interface Post {
 }
 
 export interface Education {
-  description: Link;
-  title: Title;
+  description: string;
+  title: string;
+  id: string;
 }
 
 export interface Link {
@@ -40,6 +41,7 @@ export interface ExtractedPost {
 }
 
 export interface ExtractedEducation {
+  id: string;
   title: string;
   description: string;
 }

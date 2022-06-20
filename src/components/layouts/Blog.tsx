@@ -37,7 +37,7 @@ const BlogItem = memo(function BlogItem({ post }: BlogItemProps) {
           </div>
         </a>
       </Link>
-      <div className="grid grid-cols-4 md:grid-cols-5 overflow-auto">
+      <div className="grid grid-cols-4 md:grid-cols-5 lg:grid-cols-7 overflow-auto">
         {post.tags.map((tag, index) => (
           <Tag key={index} tag={tag} />
         ))}

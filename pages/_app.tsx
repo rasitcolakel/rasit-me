@@ -4,9 +4,11 @@ import { Provider } from "src/context/app";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Provider>
-      <Component {...pageProps} />
-    </Provider>
+    <div className="page-container">
+      <Provider>
+        <Component {...pageProps} />
+      </Provider>
+    </div>
   );
 }
 

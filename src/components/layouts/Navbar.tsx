@@ -41,7 +41,10 @@ function Navbar({}: Props) {
     normal: "navbar-item",
   };
   return (
-    <div className="navbar sticky">
+    <div className="navbar sticky w-full flex-col mt-2 flex items-center justify-between mb-4 md:flex-row md:mt-0">
+      <Link href="/">
+        <a className="text-color font-bold text-xl">RASIT COLAKEL</a>
+      </Link>
       <ul className="flex flex-wrap -mb-px">
         {tabs.map((tab, index) => (
           <Link href={tab.link} key={index}>

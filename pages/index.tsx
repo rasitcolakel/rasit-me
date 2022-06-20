@@ -1,20 +1,12 @@
 import Navbar from "@/components/layouts/Navbar";
 import SocialMedia from "@/components/SocialMedia";
-import { getEducationInformation } from "@/utils/queries";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import { useContext, useEffect } from "react";
-import { Context } from "src/context/app";
-import { Education } from "src/models";
-interface Props {
-  educations: Education[];
-}
-const Home: NextPage<Props> = ({ educations }) => {
-  const { dispatch } = useContext(Context) as any;
-  useEffect(() => {
-    dispatch({ type: "SET_EDUCATIONS", educations });
-  }, [dispatch, educations]);
+
+interface Props {}
+
+const Home: NextPage<Props> = () => {
   return (
     <>
       <Head>
@@ -24,10 +16,6 @@ const Home: NextPage<Props> = ({ educations }) => {
           content="I am an enthusiastic web and mobile developer. I like coding and developing new projects for startups, and I enjoy learning new technoloqies to improve my skills. I also have passion for learning different languages"
         />
         <link rel="icon" href="/favicon.ico" />
-        <meta
-          name="google-site-verification"
-          content="gg0UZmYfX4Zuwv63fkEInaOOUnpii72MrnDADo6QgCg"
-        />
       </Head>
       <main className="flex flex-col items-center w-full h-full">
         <Navbar />
@@ -50,15 +38,5 @@ const Home: NextPage<Props> = ({ educations }) => {
     </>
   );
 };
-
-export async function getServerSideProps(req: any, res: any) {
-  let educations = (await getEducationInformation()) as Education[];
-
-  return {
-    props: {
-      educations,
-    },
-  };
-}
 
 export default Home;

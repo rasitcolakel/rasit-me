@@ -47,7 +47,6 @@ const Tag = ({ tag }: Props) => {
   if (!className)
     className =
       ClassNames[Math.floor(Math.random() * ClassNames.length)].className;
-  console.log(className);
   return (
     <div className={className}>
       <div className="text-xs font-normal leading-none max-w-full flex-initial">
