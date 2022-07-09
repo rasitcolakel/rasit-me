@@ -8,6 +8,7 @@ export interface Education {
   description: Link;
   title: Title;
   id: string;
+  type: Link;
 }
 
 export interface Link {
@@ -44,4 +45,5 @@ export interface ExtractedEducation {
   id: string;
   title: string;
   description: string;
+  type: string;
 }

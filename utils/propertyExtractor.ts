@@ -32,6 +32,7 @@ function extractEducation(properties: Education): ExtractedEducation {
     id: properties.id,
     title: titleExtractor(properties.title),
     description: richTextExtractor(properties.description),
+    type: richTextExtractor(properties.type),
   };
 }
 

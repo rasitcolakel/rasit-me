@@ -10,6 +10,11 @@ const reducer = (state: any, action: any) => {
         ...state,
         educations: action.educations,
       };
+    case "SET_EXPERIENCES":
+      return {
+        ...state,
+        experiences: action.experiencess,
+      };
     default:
       return state;
   }

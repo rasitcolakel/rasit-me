@@ -12,12 +12,14 @@ import { Context } from "src/context/app";
 import { Education, ExtractedEducation } from "src/models";
 interface Props {
   educations: ExtractedEducation[];
+  experiences: ExtractedEducation[];
 }
-const AboutPage: NextPage<Props> = ({ educations }) => {
+const AboutPage: NextPage<Props> = ({ educations, experiences }) => {
   const { dispatch } = useContext(Context) as any;
   useEffect(() => {
     dispatch({ type: "SET_EDUCATIONS", educations });
-  }, [dispatch, educations]);
+    dispatch({ type: "SET_EXPERIENCES", experiences });
+  }, [dispatch, educations, experiences]);
 
   return (
     <>
@@ -32,7 +34,7 @@ const AboutPage: NextPage<Props> = ({ educations }) => {
       <main className="flex flex-col items-center w-full h-full">
         <Navbar />
         <div className="flex flex-col grow items-center  px-4">
-          <About educations={educations} />
+          <About educations={educations} experiences={experiences} />
         </div>
       </main>
       <footer></footer>
@@ -49,10 +51,18 @@ export const getServerSideProps: GetServerSideProps = async (
     "Cache-Control",
     `public, s-maxage=${maxAge}, stale-while-revalidate=${maxAge * 2}`
   );
-  let educations = (await getEducationInformation()) as ExtractedEducation[];
+  let educationsAndExperiences =
+    (await getEducationInformation()) as ExtractedEducation[];
+  const educations = educationsAndExperiences.filter(
+    (education: ExtractedEducation) => education.type === "education"
+  );
+  const experiences = educationsAndExperiences.filter(
+    (education: ExtractedEducation) => education.type === "experience"
+  );
   return {
     props: {
       educations,
+      experiences,
       revalidate: true,
     },
   };
