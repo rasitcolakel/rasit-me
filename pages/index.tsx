@@ -22,7 +22,7 @@ const Home: NextPage<Props> = () => {
         <div className="flex flex-col grow items-center justify-center">
           <div className="h-56 w-56 relative p-2 shadow-xl rounded-full mt-2">
             <Image
-              src="/pp.jpeg"
+              src="/pp.jpg"
               className="rounded-full p-1 bg-gray-200"
               alt="Picture of the author"
               layout="fill"
