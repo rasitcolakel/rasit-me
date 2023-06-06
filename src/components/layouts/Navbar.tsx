@@ -23,18 +23,18 @@ function Navbar({}: Props) {
       name: "About",
       link: "/about",
     },
-    {
-      name: "Projects",
-      link: "/projects",
-    },
+    // {
+    //   name: "Projects",
+    //   link: "/projects",
+    // },
     {
       name: "Blog",
       link: "/blog",
     },
-    {
-      name: "Contact",
-      link: "/contact",
-    },
+    // {
+    //   name: "Contact",
+    //   link: "/contact",
+    // },
   ];
   const tabClasses = {
     active: "navbar-item-active",
