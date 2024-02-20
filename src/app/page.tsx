@@ -11,7 +11,7 @@ const socials = [
   },
   {
     name: "github",
-    url: "",
+    url: "https://github.com/rasitcolakel",
     icon: Github,
   },
   {
